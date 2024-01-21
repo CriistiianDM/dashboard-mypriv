@@ -1,5 +1,7 @@
 -- Postgresql
 
+-- @autor: Cristian Machado <cristian.machado@correounivalle.edu.co>
+
 -- Create Database
 SELECT 'CREATE DATABASE mypriv_go'
 WHERE NOT EXISTS (SELECT FROM pg_database WHERE datname = 'mypriv_go')\gexec
@@ -402,12 +404,12 @@ LANGUAGE plpgsql;
 -- Default Routes
 CREATE OR REPLACE FUNCTION get_default_routes()
 RETURNS TABLE (
-    route VARCHAR(50)
+    route_ VARCHAR(50)
 )
 AS $$
 BEGIN
     RETURN QUERY
-    SELECT route
+    SELECT route as route_
     FROM routes_defautls;
 END;
 $$
@@ -430,7 +432,7 @@ END;
 $$
 LANGUAGE plpgsql;
 
-Insert Rows Values
+-- Insert Rows Values
 
 INSERT INTO routes_defautls (route) 
 values ('my-priv');
