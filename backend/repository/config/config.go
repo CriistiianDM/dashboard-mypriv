@@ -12,5 +12,6 @@ package config;
 */
 func ConfigMapSql() map[string]string {
 	return map[string]string{
-		"default_routes": "SELECT * FROM get_default_routes()"}
+		"default_routes": "SELECT * FROM get_default_routes()",
+		"get_data_email": "SELECT * FROM get_user_all_data($1)"}
 }

@@ -9,7 +9,7 @@ package main
 // Librerary import
 import (
 	"github.com/gin-gonic/gin"
-	"backend/repository/defaultRoutes"
+	"backend/repository/services/defaultRoutes"
 	"backend/src/routes"
 	"backend/db"
 	"fmt"
