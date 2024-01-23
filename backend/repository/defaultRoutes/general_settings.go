@@ -1,33 +1,34 @@
 /**
  *
  * @autor: Cristian Machado <cristian.machado@correounivalle.edu.co>
- * @copyrigth: 2023
+ * @copyrigth: 2024
  * @license: GPL-3.0
 */
 
-package generalSettings
+package defaultRoutes
 
 // Librerary import
 import (
 	"backend/repository/query"
+	"backend/repository/config"
 	"fmt"
 )
 
 // Vars
 var (
-	_get_routes = "SELECT * FROM get_default_routes()"
 	instanceQuery = query.GeneralQuery{}
+	_get_routes = config.ConfigMapSql()["default_routes"]
 )
 
 /** Import Settings of db */
-type GeneralSettings struct {
+type GeneralRoutes struct {
 	route string
 }
 
 /**
   * Get data of all routes
 */
-func (p GeneralSettings) GetAllRoutes() (map[string]interface{}, error) {
+func (p GeneralRoutes) GetAllRoutes() (map[string]interface{}, error) {
 	// Execute the query
 	response := make(map[string]interface{})
 	result, is_error := query.Query(instanceQuery, _get_routes)

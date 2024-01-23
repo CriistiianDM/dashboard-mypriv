@@ -1,23 +1,24 @@
 /**
    * 
    * @autor: Cristian Machado <cristian.machado@correounivalle.edu.co>
-   * @copyrigth: 2023
+   * @copyrigth: 2024
    * @license: GPL-3.0
 */
 package main
 
 // Librerary import
 import (
-	_ "github.com/gin-gonic/gin"
+	"github.com/gin-gonic/gin"
+	"backend/repository/defaultRoutes"
+	"backend/src/routes"
 	"backend/db"
-	"backend/repository/generalSettings"
 	"fmt"
 	"sync"
 )
 
 // Constants
 var (
-	instanceRoutes = generalSettings.GeneralSettings{}
+	instanceRoutes = defaultRoutes.GeneralRoutes{}
 )
 
 /**
@@ -35,7 +36,12 @@ func _initServer() {
 	generateRoutes := _initRoutes()
 
 	if len(generateRoutes) != 0 {
-		//Initialize the route server
+		router := gin.Default()
+		// Create a group of routes
+		apiGroup := router.Group("/api")
+		// Init all routes
+		routes.InitializeRoutes(apiGroup, generateRoutes)
+		router.Run(":4700")
 	}
 }
 
@@ -53,7 +59,7 @@ func _executeRun() {
   * Initialize the routes
 */
 func _initRoutes() map[string]interface{} {
-	response, err := generalSettings.GetAllRoutes(instanceRoutes)
+	response, err := defaultRoutes.GetAllRoutes(instanceRoutes)
 	if err != nil {
 		fmt.Println("Error in get routes", err)
 		response = make(map[string]interface{})

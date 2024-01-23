@@ -1,20 +1,20 @@
 /**
  *
  * @autor: Cristian Machado <cristian.machado@correounivalle.edu.co>
- * @copyrigth: 2023
+ * @copyrigth: 2024
  * @license: GPL-3.0
 */
 
-package generalSettings
+package defaultRoutes
 
 /** Interface Setting */
-type InterfaceGeneralSettings interface {
+type InterfaceGeneralRoutes interface {
 	GetAllRoutes() (map[string]interface{}, error)
 }
 
 /**
   * Return all params in request
 */
-func GetAllRoutes(p InterfaceGeneralSettings) (map[string]interface{}, error) {
+func GetAllRoutes(p InterfaceGeneralRoutes) (map[string]interface{}, error) {
 	return p.GetAllRoutes()
 }
