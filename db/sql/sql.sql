@@ -52,6 +52,13 @@ MAXVALUE 1000000
 START 1
 CACHE 1;
 
+CREATE SEQUENCE IF NOT EXISTS dashboard_data_id_seq
+INCREMENT 1
+MINVALUE 1
+MAXVALUE 1000000
+START 1
+CACHE 1;
+
 -- Ip Address Access
 CREATE TABLE IF NOT EXISTS ip_address_access (
     id BIGINT PRIMARY KEY DEFAULT nextval('ip_address_id_seq'),
@@ -316,7 +323,7 @@ CREATE OR REPLACE FUNCTION get_user_all_data(
     email_p TEXT
 )
 RETURNS TABLE (
-    id BIGINT,
+    id_user BIGINT,
     nickname VARCHAR(50),
     created_at TIMESTAMP,
     first_name VARCHAR(50),
@@ -327,13 +334,11 @@ RETURNS TABLE (
 AS $$
 BEGIN
     RETURN QUERY
-    SELECT id, nickname, t1.created_at, first_name, 
-    last_name, profile_picture, data
+    SELECT t1.id AS id_user, t1.nickname, t1.created_at, t2.first_name, 
+    t2.last_name, t2.profile_picture, t3.data
     FROM user_accounts AS t1
-    INNER JOIN personal_information AS t2
-    INNER JOIN dashboard_data AS t3
-    ON t1.id = t2.user_account_id 
-    AND t1.id = t3.user_account_id
+    INNER JOIN personal_information AS t2 ON t1.id = t2.user_account_id
+    INNER JOIN dashboard_data AS t3 ON t1.id = t3.user_account_id
     WHERE t1.email = email_p;
 END;
 $$

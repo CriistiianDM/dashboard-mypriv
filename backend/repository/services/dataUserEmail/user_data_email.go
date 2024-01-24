@@ -21,11 +21,11 @@ var (
 
 /* Class DataUserEmail */
 type DataUserEmail struct {
-	id int,
-    nickname string,
-    created_at string,
-    first_name string,
-    last_name string,
+	id int
+    nickname string
+    created_at string
+    first_name string
+    last_name string
     profile_picture string
     data string
 }
@@ -37,7 +37,7 @@ type DataUserEmail struct {
 func (p DataUserEmail) GetDataUserEmail(email string) (map[string]interface{}, error) {
 	// Execute the query
 	response := make(map[string]interface{})
-	result, is_error := query.Query(instanceQuery, _query_data_email)
+	result, is_error := query.Query(instanceQuery, _query_data_email, email)
 
 	// If error
 	if is_error == nil {
@@ -50,6 +50,7 @@ func (p DataUserEmail) GetDataUserEmail(email string) (map[string]interface{}, e
 			response[p.nickname] = p
 		}
 	}
+
 	// Return result
 	return response, is_error
 }
