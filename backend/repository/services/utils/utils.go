@@ -69,7 +69,6 @@ func GetDataExec(_query string, args ...interface{}) (map[string]interface{} , e
 	return response, is_error
 }
 
-
 /**
   * ConvertColumns to []interface{}
 */
