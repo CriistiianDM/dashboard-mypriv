@@ -8,7 +8,7 @@
 package utils;
 
 import (
-	"regexp"
+	_ "regexp"
 )
 
 /**

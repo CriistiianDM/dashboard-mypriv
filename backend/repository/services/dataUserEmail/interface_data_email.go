@@ -9,12 +9,12 @@ package dataUserEmail
 
 /** Interface Setting */
 type InterfaceDataUserEmail interface {
-	GetDataUserEmail(string) (map[string]interface{}, error)
+	GetDataUserEmail(string) ([]map[string]interface{}, error)
 }
 
 /**
   * Return all params in request
 */
-func GetDataUserEmail(p InterfaceDataUserEmail, email string) (map[string]interface{}, error) {
+func GetDataUserEmail(p InterfaceDataUserEmail, email string) ([]map[string]interface{}, error) {
 	return p.GetDataUserEmail(email)
 }

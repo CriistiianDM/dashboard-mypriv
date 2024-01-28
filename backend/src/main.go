@@ -58,11 +58,11 @@ func _executeRun() {
 /**
   * Initialize the routes
 */
-func _initRoutes() map[string]interface{} {
+func _initRoutes() []map[string]interface{} {
 	response, err := defaultRoutes.GetAllRoutes(instanceRoutes)
 	if err != nil {
 		fmt.Println("Error in get routes", err)
-		response = make(map[string]interface{})
+		response = make([]map[string]interface{},0)
 	}
 
 	return response

@@ -7,6 +7,7 @@
 
 package controls;
 
+// Librerary import
 import (
 	"github.com/gin-gonic/gin"
 	"fmt"
@@ -14,7 +15,6 @@ import (
 	"backend/repository/services/dataUserEmail"
 	"backend/repository/services/createUser"
 	"backend/src/services/utils"
-	_ "encoding/json"
 )
 
 var (
@@ -31,12 +31,19 @@ func GetUserByEmail(c *gin.Context) {
 	instanceRequest.BodyRequest = c
 	email_, ok 	:= (httpControl.GetBodyRequest(instanceRequest))["email"]
     _status := 500
-	_res := gin.H{"status": false , "message": "No found user or email no register"}
+	_res := gin.H{
+		"status": false , 
+	    "message": "No found user or email no register",
+	}
 
 	if ok {
 		_response, err := dataUserEmail.GetDataUserEmail(instDataUser,email_.(string));
 		if err == nil {
-			_res =  gin.H{"data": _response, "status": 200, "message": "user found"}
+			_res =  gin.H{
+				"data": _response, 
+				"status": 200, 
+				"message": "user found",
+			}
 			_status = 200
 		} else {
 			fmt.Println(err);
@@ -55,12 +62,19 @@ func InsertNewUser(c *gin.Context) {
 	instanceRequest.BodyRequest = c
 	params_ := (httpControl.GetBodyRequest(instanceRequest))
     _status := 500
-	_res := gin.H{"status": false , "message": "No data complete for insert create user."}
+	_res := gin.H{
+		"status": false , 
+		"message": "No data complete for insert create user.",
+	}
 	
 	if len(params_) == 6 {
 		_response, err := createUser.InsertNewUser(instanceCreateuser, utils.ConvertDataToArrayCreateUser(params_)...);
 		if err == nil {
-			_res =  gin.H{"data": _response, "status": 200, "message": "user found"}
+			_res =  gin.H{
+				"data": _response, 
+				"status": 200, 
+				"message": "User Created",
+			}
 			_status = 200
 		} else {
 			fmt.Println(err);

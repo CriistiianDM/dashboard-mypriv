@@ -14,11 +14,11 @@ import (
 )
 
 /* Router type declaration */
-func InitializeRoutes(router httpRequest.HttpRouter , allRoutes map[string]interface{}) {
+func InitializeRoutes(router httpRequest.HttpRouter , allRoutes []map[string]interface{}) {
    if allRoutes != nil || len(allRoutes) != 0 {
-      for key := range allRoutes {
-         router.GET(fmt.Sprintf("%s/user-email", key), httpRequest.HandleSync(controls.GetUserByEmail))
-         router.POST(fmt.Sprintf("%s/user", key), httpRequest.HandleSync(controls.InsertNewUser))
+      for _, route := range allRoutes {
+         router.GET(fmt.Sprintf("%s/user-email", route["route_"]), httpRequest.HandleSync(controls.GetUserByEmail))
+         router.POST(fmt.Sprintf("%s/user", route["route_"]), httpRequest.HandleSync(controls.InsertNewUser))
       }
    }
 }

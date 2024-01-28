@@ -9,12 +9,12 @@ package defaultRoutes
 
 /** Interface Setting */
 type InterfaceGeneralRoutes interface {
-	GetAllRoutes() (map[string]interface{}, error)
+	GetAllRoutes() ([]map[string]interface{}, error)
 }
 
 /**
   * Return all params in request
 */
-func GetAllRoutes(p InterfaceGeneralRoutes) (map[string]interface{}, error) {
+func GetAllRoutes(p InterfaceGeneralRoutes) ([]map[string]interface{}, error) {
 	return p.GetAllRoutes()
 }
