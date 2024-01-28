@@ -13,5 +13,6 @@ package config;
 func ConfigMapSql() map[string]string {
 	return map[string]string{
 		"default_routes": "SELECT * FROM get_default_routes()",
-		"get_data_email": "SELECT * FROM get_user_all_data($1)"}
+		"get_data_email": "SELECT * FROM get_user_all_data($1)",
+	    "create_user": "CALL insert_new_user_account($1,$2,$3,$4,$5,$6)"}
 }

@@ -172,7 +172,7 @@ CREATE OR REPLACE PROCEDURE insert_new_user_account(
     nickname_ TEXT,
     first_name_ TEXT,
     last_name_ TEXT,
-    profile_picture_ TEXT,
+    profile_picture_ TEXT
 )
 LANGUAGE plpgsql
 AS $$
@@ -180,7 +180,7 @@ DECLARE
     new_user_id BIGINT;
 BEGIN
     INSERT INTO user_accounts (email, password, nickname) 
-    VALUES (email_, password_, nickname_);
+    VALUES (email_, password_, nickname_)
     RETURNING id INTO new_user_id;
 
     INSERT INTO personal_information (user_account_id ,first_name, last_name, profile_picture)
