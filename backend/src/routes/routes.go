@@ -19,6 +19,7 @@ func InitializeRoutes(router httpRequest.HttpRouter , allRoutes []map[string]int
       for _, route := range allRoutes {
          router.GET(fmt.Sprintf("%s/user-email", route["route_"]), httpRequest.HandleSync(controls.GetUserByEmail))
          router.POST(fmt.Sprintf("%s/user", route["route_"]), httpRequest.HandleSync(controls.InsertNewUser))
+         router.POST(fmt.Sprintf("%s/follower", route["route_"]), httpRequest.HandleSync(controls.InsertFollower))
       }
    }
 }

@@ -27,13 +27,13 @@ type CreateUser struct {}
 */
 func (p CreateUser) InsertNewUser(data ...*string) (map[string]interface{} , error) {
 	// Return result
-	return utils.GetDataExec(_query_insert,p.convertToStringInterfaceSlice(data)...)
+	return utils.GetDataExec(_query_insert,p.convertInterfaceSlice(data)...)
 }
 
 /**
   * Convert []*string to []interface{}
 */
-func (p CreateUser) convertToStringInterfaceSlice(data []*string) []interface{} {
+func (p CreateUser) convertInterfaceSlice(data []*string) []interface{} {
     result := make([]interface{}, len(data))
     for i, v := range data {
         result[i] = *v

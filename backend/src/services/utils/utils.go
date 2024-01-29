@@ -9,13 +9,14 @@ package utils;
 
 import (
 	_ "regexp"
+	"github.com/gin-gonic/gin"
 )
 
 /**
   * Conver data of request to []*string
   * Todo: Add Validation later
 */
-func ConvertDataToArrayCreateUser(p map[string]interface{}) []*string {
+func ConvertDataToArrayString(p map[string]interface{}) []*string {
 	var response []*string
 	expectedKeys := []string{"email", "password", "nickname", "firstname", "lastname", "img"}
 	if len(p) == 6 && CheckExpectedKeys(p,expectedKeys) {
@@ -25,6 +26,27 @@ func ConvertDataToArrayCreateUser(p map[string]interface{}) []*string {
 	   }
 	}
 
+	return response;
+}
+
+
+/**
+  * Conver data of request to []*int
+  * Todo: Add Validation later
+*/
+func ConvertDataToArrayInt(p map[string]interface{}) []*int {
+	var response []*int
+	expectedKeys := []string{"user_account", "follower_id"}
+
+	if CheckExpectedKeys(p,expectedKeys) {
+	   for _, key := range expectedKeys {
+		 if value, ok := p[key].(float64); ok {
+			valueInt := int(value)
+		 	response = append(response, &valueInt)
+		 } 
+	   }
+	}
+	
 	return response;
 }
 
@@ -46,4 +68,32 @@ func CheckExpectedKeys(m map[string]interface{}, expectedKeys []string) bool {
     }
 
     return haveAllKeys;
+}
+
+/**
+  * Return res to client
+*/
+func ResponseControlGeneral(c *gin.Context , args ...map[string]interface{}) {
+	// Instance data of the request
+	response := args[0]
+	_status := response["status"].(int)
+	_res := gin.H{
+		"data": response["data"],
+		"status": response["statusReq"], 
+		"message": response["message_default"],
+	}
+
+	c.JSON(_status, _res);
+}
+
+/**
+  * Data default to res 
+*/
+func StateDefaultReq() map[string]interface{} {
+	return map[string]interface{}{
+		"data": nil,
+		"statusReq": false, 
+		"message_default": "Error in request",	
+		"status": 500,
+	}
 }
