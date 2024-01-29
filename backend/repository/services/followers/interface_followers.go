@@ -9,7 +9,8 @@ package followers
 
 /** Interface Followers **/
 type InterfaceFollower interface {
-	InsertFollower(data ...*int) (map[string]interface{}, error)
+	InsertFollower(...*int) (map[string]interface{}, error)
+	UpdateFollower(...*interface{}) (map[string]interface{}, error) 
 }
 
 /**
@@ -17,4 +18,11 @@ type InterfaceFollower interface {
 */
 func InsertFollower(p InterfaceFollower , data ...*int) (map[string]interface{}, error) {
 	return p.InsertFollower(data...)
+}
+
+/**
+  * Get data of all routes
+*/
+func UpdateFollower(p InterfaceFollower , data ...*interface{}) (map[string]interface{}, error) {
+	return p.UpdateFollower(data...)
 }

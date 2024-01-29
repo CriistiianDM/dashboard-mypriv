@@ -356,10 +356,10 @@ AS $$
 BEGIN
     RETURN QUERY
     SELECT 
-    user_account_id, follower_id,
-    FROM follows 
-    WHERE user_account_id = user_account_id_p
-    OR follower_id = user_account_id_p;
+    t1.user_account_id, t1.follower_id
+    FROM follows AS t1
+    WHERE t1.user_account_id = user_account_id_p
+    OR t1.follower_id = user_account_id_p
     AND active = TRUE;
 END;
 $$
@@ -380,11 +380,11 @@ AS $$
 BEGIN
     RETURN QUERY
     SELECT 
-    user_account_id,follower_id,data,
-    start_sub,finish_sub
-    FROM subscriptions_followers 
-    WHERE user_account_id = user_account_id_p
-    AND active_sub = TRUE;
+    t1.user_account_id,t1.follower_id, t1.data,
+    t1.start_sub, t1.finish_sub
+    FROM subscriptions_followers AS t1
+    WHERE t1.user_account_id = user_account_id_p
+    AND t1.active_sub = TRUE;
 END;
 $$
 LANGUAGE plpgsql;
@@ -399,9 +399,9 @@ RETURNS TABLE (
 AS $$
 BEGIN
     RETURN QUERY
-    SELECT data
-    FROM dashboard_data 
-    WHERE user_account_id = user_account_id_p;
+    SELECT t1.data
+    FROM dashboard_data AS t1
+    WHERE t1.user_account_id = user_account_id_p;
 END;
 $$
 LANGUAGE plpgsql;

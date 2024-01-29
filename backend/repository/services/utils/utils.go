@@ -24,11 +24,11 @@ var (
 func GetDataQuery(query_ string , args ...interface{}) ([]map[string]interface{}, error) {
 	// Execute the query
 	result, is_error := query.Query(insQuery, query_, args...)
-	columsResut, column_ := instanceColumsResult(result)
 	mapArray := make([]map[string]interface{}, 0)
 
 	// If error
 	if is_error == nil {
+		columsResut, column_ := instanceColumsResult(result)
 		defer result.Close()
 		for result.Next() {
 			err := result.Scan(columsResut...)
@@ -86,4 +86,31 @@ func instanceColumsResult(result *sql.Rows) ([]interface{},[]string) {
 	}
 
 	return response , columns_
+}
+
+/**
+  * Convert *[]interface{} to []interface{}
+*/
+func ConvertInterfaceDefault(data ...*interface{}) []interface{} {
+	response := make([]interface{}, len(data))
+	if len(data) > 0 {
+		for i,v := range data {
+			response[i] = *v
+		}
+	}
+
+	fmt.Println(response)
+	return response
+}
+
+/**
+  * Convert []*int to []interface{}
+*/
+func ConvertInterfaceSlice(data []*int) []interface{} {
+    result := make([]interface{}, len(data))
+    for i, v := range data {
+        result[i] = *v
+    }
+
+    return result
 }

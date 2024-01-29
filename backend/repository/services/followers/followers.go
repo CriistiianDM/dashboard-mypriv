@@ -11,31 +11,26 @@ package followers
 import (
 	"backend/repository/config"
 	"backend/repository/services/utils"
-	"fmt"
 )
 
 // Vars
-var (
+var (	
 	_insertFollower = config.ConfigMapSql()["insert_follower"]
+	_updateFollower = config.ConfigMapSql()["update_follower"]
 )
 
-type FollersGeneral struct {}
+type FollowersGeneral struct {}
 
 /**
-  * Get data of all routes
+  * Insert Followers
 */
-func (p FollersGeneral) InsertFollower(data ...*int) (map[string]interface{}, error) {
-	return utils.GetDataExec(_insertFollower, p.convertInterfaceSlice(data)...)
+func (p FollowersGeneral) InsertFollower(data ...*int) (map[string]interface{}, error) {
+	return utils.GetDataExec(_insertFollower, utils.ConvertInterfaceSlice(data)...)
 }
 
 /**
-  * Convert []*int to []interface{}
+  * Update Followers
 */
-func (p FollersGeneral) convertInterfaceSlice(data []*int) []interface{} {
-    result := make([]interface{}, len(data))
-    for i, v := range data {
-        result[i] = *v
-    }
-	fmt.Println("aaa", result)
-    return result
+func (p FollowersGeneral) UpdateFollower(data ...*interface{}) (map[string]interface{}, error) {
+	return utils.GetDataExec(_updateFollower, utils.ConvertInterfaceDefault(data...)...)
 }
