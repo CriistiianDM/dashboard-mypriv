@@ -4,16 +4,15 @@
 */
 
 // Imports
+import React from 'react';
+import { GlobalStateProvider } from '../hooks/contex';
 import '../css/_general.css';
 
-// Component Wrapper
-const Wrapper = ({ 
-  Component, 
-  pageProps 
-}) => 
-{
-  return <Component {...pageProps} />;
-}
-
-// Export
-export default Wrapper;
+// _app
+export default ({ Component, pageProps }) => {
+  return (
+    <GlobalStateProvider>
+      <Component {...pageProps} />
+    </GlobalStateProvider>
+  );
+};
