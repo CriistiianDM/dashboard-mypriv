@@ -8,7 +8,7 @@ import styles from '../../css/loader.module.css';
 
 export default () => {
     const { globalState } = useGlobalState();
-    console.log(globalState)
+
     return (
         !globalState.isLoad &&
         <main className={styles.container_loader}>

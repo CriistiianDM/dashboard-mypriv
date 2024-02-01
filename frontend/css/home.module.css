@@ -2,7 +2,7 @@
 
 ._container_home_primary {
     display: flex;
-    gap: 20px;
+    gap: 200px;
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;
@@ -22,7 +22,6 @@
     width: 220px;
     border: rgba(69,67,103,1) 1px solid;
     border-radius: 10px;
-    margin-left: 7em;
     padding: 7px;
     overflow: hidden;
 }
@@ -41,6 +40,7 @@
 
 ._containe_login a[type="content"] {
    display: flex;
+   position: relative;
    justify-content: center;
    align-items: center;
    border-radius: 5px;
@@ -49,10 +49,17 @@
    height: 50px;
    overflow: hidden;
    cursor: pointer;
+   z-index: 9;
 }
 
 ._containe_login a[type="content"] strong {
+    position: absolute;
+    width: 100%;
+    left: 0;
+    right: 0;
     color: var(--white);
+    text-align: center;
+    z-index: 1;
 }
 
 ._containe_login a[type="content"] figure {
@@ -60,7 +67,9 @@
     height: 100%;
 }
 
-._containe_login a[type="content"] 
-div {
-    all: unset;
+._containe_login a[type="content"] div,
+._containe_login a[type="content"] iframe {
+    position: relative;
+    opacity: 0.00001;
+    z-index: 99;
 }

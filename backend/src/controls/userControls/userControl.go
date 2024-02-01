@@ -40,6 +40,7 @@ func GetUserByEmail(c *gin.Context) {
 			if len(_response) > 0 {
 				requestParamns["data"] = _response;
 				requestParamns["message_default"] = "user found";
+				requestParamns["statusReq"] = true;
 			} else {
 				requestParamns["message_default"] = "user not found";
 			}

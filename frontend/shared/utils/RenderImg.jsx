@@ -4,7 +4,7 @@
 */
 
 // Render Img
-const RenderImg = ({
+export default ({
     url,
     alt = "default"
 }) => {
@@ -15,6 +15,3 @@ const RenderImg = ({
         </figure>
     );
 }
-
-// Export
-export default RenderImg;

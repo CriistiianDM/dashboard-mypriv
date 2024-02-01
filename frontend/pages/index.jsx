@@ -10,16 +10,25 @@ import GoogleLogin from "../shared/google/GoogleLogin";
 import Loader from "../shared/utils/Loader";
 import { useEffect } from 'react';
 import { useGlobalState } from '../hooks/contex';
+import { useRouter } from 'next/router';
 
 /**
  * Route Page Init
  */
 export default () => {
    //const
-   const { setGlobalState } = useGlobalState();
+   const 
+   { globalState , setGlobalState } = useGlobalState(),
+   router = useRouter();
 
    // Load Windows
    useEffect(() => {
+      // Validate if is loggued
+      if (globalState.isLogged) {
+          router.push('/home');
+      }
+
+      // Quit Loader
       setGlobalState(prevState => ({
          ...prevState,
          isLoad: true,

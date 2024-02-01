@@ -9,6 +9,7 @@ package main
 // Librerary import
 import (
 	"github.com/gin-gonic/gin"
+	"github.com/gin-contrib/cors"
 	"backend/repository/services/defaultRoutes"
 	"backend/src/routes"
 	"backend/db"
@@ -36,7 +37,8 @@ func _initServer() {
 	generateRoutes := _initRoutes()
 
 	if len(generateRoutes) != 0 {
-		router := gin.Default()
+		router := gin.Default();
+		router.Use(cors.Default())
 		// Create a group of routes
 		apiGroup := router.Group("/api")
 		// Init all routes
