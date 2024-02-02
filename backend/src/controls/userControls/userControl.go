@@ -165,3 +165,27 @@ func GetDashboardUser(c *gin.Context) {
 
 	utils.ResponseControlGeneral(c, requestParamns)
 }
+
+/**
+ * Return All data of user
+*/
+func GetDataAllUser(c *gin.Context) {
+	requestParamns := utils.StateDefaultReq();
+
+	_response, err := userUtils.GetAllUserData(instanceUser);
+	if err == nil {
+		requestParamns["status"] = 200;
+		if len(_response) > 0 {
+			requestParamns["data"] = _response;
+			requestParamns["message_default"] = "All Data User";
+			requestParamns["statusReq"] = true;
+		} else {
+			requestParamns["message_default"] = "No have Data User";
+		}
+	} else {
+		fmt.Println(err);
+		requestParamns["message_default"] = err;
+	}
+
+	utils.ResponseControlGeneral(c, requestParamns)
+}

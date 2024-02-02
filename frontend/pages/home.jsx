@@ -3,10 +3,14 @@
  * @copyright:  2024 
 */
 
+import Header from '../shared/home/Header';
+import styles from '../css/home.page.module.css';
+
+// Page Home
 export default () => {
     return (
-        <main>
-            <h1>Hola, usuario</h1>
+        <main className={styles.containerHomePage}>
+            <Header />
         </main>
     );
 }

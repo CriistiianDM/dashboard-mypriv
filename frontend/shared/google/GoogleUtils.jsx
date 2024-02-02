@@ -10,7 +10,7 @@ import {
 import CryptoJS from 'crypto-js';
 import Cookies from 'js-cookie';
 
-const secrecToken = '489438948sdjkdjdssnnayuvtyyiugyuy';
+const _0x36547a=_0x19d1;function _0x19d1($,x){let _=_0x2da2();return(_0x19d1=function($,x){return _[$-=442]})($,x)}!function($,x){let _=_0x19d1,t=$();for(;;)try{let n=-parseInt(_(447))/1+-parseInt(_(445))/2+-parseInt(_(442))/3+parseInt(_(446))/4+parseInt(_(451))/5*(-parseInt(_(448))/6)+parseInt(_(444))/7*(parseInt(_(452))/8)+-parseInt(_(443))/9*(-parseInt(_(450))/10);if(233795===n)break;t.push(t.shift())}catch(c){t.push(t.shift())}}(_0x2da2,233795);const secrecToken=_0x36547a(449);function _0x2da2(){let $=["49xjEEIm","275918eviGjP","593724kFiWoF","15413OBLEFE","294VlUZwC","489438948sdjkdjdssnnayuvtyyiugyuy","1418430RUwjHx","13605XCCByt","125688iyraMZ","915852KJbrCu","36OSqUYy"];return(_0x2da2=function(){return $})()}
 
 /***
  *  Validate login or create account

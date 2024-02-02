@@ -33,3 +33,16 @@ export const getDataUserEmail = (data) => {
         urlEndPoint: json.getUserEmail
     })
 }
+
+/**
+ * Get data of user per email
+ * 
+ * @param {*} param0 
+ * @returns 
+ */
+export const getAllDataUser = () => {
+    return fetchPostGeneral({
+        dataSend: {},
+        urlEndPoint: json.getAllUser
+    })
+}

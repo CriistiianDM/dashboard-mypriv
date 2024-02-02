@@ -1,0 +1,13 @@
+/* Header Styles */
+
+.containerHeader {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    height: 5em;
+    width: 100%;
+    border-bottom: rgba(69,67,103,1) 1px solid;
+    padding: 12px 22px;
+    overflow: hidden;
+}

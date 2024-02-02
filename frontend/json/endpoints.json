@@ -1,4 +1,5 @@
 {
     "createUser": "http://127.0.0.1:4700/api/my-priv/user",
-    "getUserEmail": "http://127.0.0.1:4700/api/my-priv/user-email"
+    "getUserEmail": "http://127.0.0.1:4700/api/my-priv/user-email",
+    "getAllUser": "http://127.0.0.1:4700/api/my-priv/all-user"
 }

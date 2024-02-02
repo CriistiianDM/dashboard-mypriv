@@ -437,6 +437,30 @@ END;
 $$
 LANGUAGE plpgsql;
 
+-- Validate if user exists
+CREATE OR REPLACE FUNCTION get_all_user_follow()
+RETURNS TABLE (
+    id_user BIGINT,
+    nickname VARCHAR(50),
+    created_at TIMESTAMP,
+    first_name VARCHAR(50),
+    last_name VARCHAR(50),
+    profile_picture TEXT,
+    data JSONB
+)
+AS $$
+BEGIN
+    RETURN QUERY
+    SELECT t1.id AS id_user, t1.nickname, t1.created_at, t2.first_name, 
+    t2.last_name, t2.profile_picture, t3.data
+    FROM user_accounts AS t1
+    INNER JOIN personal_information AS t2 ON t1.id = t2.user_account_id
+    INNER JOIN dashboard_data AS t3 ON t1.id = t3.user_account_id
+    LIMIT 100;
+END;
+$$
+LANGUAGE plpgsql;
+
 -- Insert Rows Values
 
 INSERT INTO routes_defautls (route) 

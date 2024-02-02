@@ -13,6 +13,7 @@ type InterfaceUserData interface {
 	GetDataSubscription(int) ([]map[string]interface{}, error)
 	GetDataDashboard(int) ([]map[string]interface{}, error)
 	GetDataUserEmail(string) ([]map[string]interface{}, error)
+	GetAllUserData() ([]map[string]interface{}, error)
 }
 
 /**
@@ -41,4 +42,11 @@ func GetDataDashboard(p InterfaceUserData, user_account int) ([]map[string]inter
 */
 func GetDataUserEmail(p InterfaceUserData, email string) ([]map[string]interface{}, error) {
 	return p.GetDataUserEmail(email)
+}
+
+/**
+  * Get all data user
+*/
+func GetAllUserData(p InterfaceUserData) ([]map[string]interface{}, error) {
+	return p.GetAllUserData()
 }

@@ -25,6 +25,7 @@ func InitializeRoutes(router httpRequest.HttpRouter , allRoutes []map[string]int
          router.GET(fmt.Sprintf("%s/user-subscription", route["route_"]), httpRequest.HandleSync(userControls.GetSubscriptionUser))
          router.GET(fmt.Sprintf("%s/user-dashboard", route["route_"]), httpRequest.HandleSync(userControls.GetDashboardUser))     
          router.POST(fmt.Sprintf("%s/user", route["route_"]), httpRequest.HandleSync(userControls.InsertNewUser))
+         router.POST(fmt.Sprintf("%s/all-user", route["route_"]),httpRequest.HandleSync(userControls.GetDataAllUser)) 
          // Follower
          router.POST(fmt.Sprintf("%s/follower", route["route_"]), httpRequest.HandleSync(followerControls.InsertFollower))
          router.PUT(fmt.Sprintf("%s/follower", route["route_"]), httpRequest.HandleSync(followerControls.UpdateFollower))

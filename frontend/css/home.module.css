@@ -66,10 +66,3 @@
     width: 30px;
     height: 100%;
 }
-
-._containe_login a[type="content"] div,
-._containe_login a[type="content"] iframe {
-    position: relative;
-    opacity: 0.00001;
-    z-index: 99;
-}

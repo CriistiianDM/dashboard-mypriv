@@ -21,5 +21,6 @@ func ConfigMapSql() map[string]string {
 		"get_follower_user": "SELECT * FROM get_followers_by_user($1)",
 		"get_subscriptions_user": "SELECT * FROM get_subscriptions_by_user($1)",
 		"get_dashboard_user": "SELECT * FROM get_dashboard_data_by_user($1)",
+		"get_data_all_user": "SELECT * FROM get_all_user_follow()",
 	}
 }

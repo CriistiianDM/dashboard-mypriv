@@ -18,6 +18,7 @@ var (
 	_query_subscriptions = config.ConfigMapSql()["get_subscriptions_user"]
 	_query_dashboard = config.ConfigMapSql()["get_dashboard_user"]
 	_query_email = config.ConfigMapSql()["get_data_email"]
+	_query_data_user = config.ConfigMapSql()["get_data_all_user"]
 )
 
 /* Class DataUserEmail */
@@ -49,4 +50,11 @@ func (p UserGeneralUtils) GetDataDashboard(user_account int) ([]map[string]inter
 */
 func (p UserGeneralUtils) GetDataUserEmail(email string) ([]map[string]interface{}, error) {
 	return utils.GetDataQuery(_query_email, email);
+}
+
+/**
+  * Get all data user
+*/
+func (p UserGeneralUtils) GetAllUserData() ([]map[string]interface{}, error) {
+	return utils.GetDataQuery(_query_data_user);
 }

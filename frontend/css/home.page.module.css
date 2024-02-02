@@ -1,0 +1,9 @@
+/* Home Page Styles */
+
+.containerHomePage {
+    display: grid;
+    grid-auto-rows: auto;
+    grid-template-columns: repeat(auto-fit, minmax( min(100%, 100dvh), 1fr));
+    gap: 30px;
+    overflow: hidden;
+}

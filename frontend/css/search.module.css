@@ -1,0 +1,40 @@
+
+.containerSearchHorizontal {
+    display: flex;
+    align-items: center;
+    justify-content: left;
+    gap: 10px;
+    height: 100%;
+    width: 220px;
+    overflow: hidden;
+}
+
+.containerSearchHorizontal div[type="icon"] {
+    width: 30px;
+    cursor: pointer;
+}
+
+.containerSearchHorizontal div[type="icon"] figure {
+    height: 100%;
+    width: 30px;
+}
+
+.containerSearchHorizontal div[type="icon"] {
+    height: 100%;
+    width: 30px;
+}
+
+.containerSearchHorizontal input[type="text"] {
+    all: unset;
+    width: 170px;
+    color: var(--white);
+    border: rgba(69,67,103,1) 1px solid;
+    height: 65%;
+    padding: 5px;
+    padding: 5px;
+    border-radius: 6px;
+}
+
+.inputNone {
+    display: none;
+}
