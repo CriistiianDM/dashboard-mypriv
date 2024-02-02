@@ -2,7 +2,7 @@
 
 .containerHeader {
     display: flex;
-    align-items: center;
+    align-content: center;
     justify-content: space-between;
     flex-wrap: wrap;
     height: 5em;
@@ -10,4 +10,42 @@
     border-bottom: rgba(69,67,103,1) 1px solid;
     padding: 12px 22px;
     overflow: hidden;
+}
+
+.containerHeader section[type="logo"] {
+    width: 100px;
+}
+
+.containerHeader section[type="logo"] figure {
+    width: 100%;
+    height: 100%;
+}
+
+.containerHeader section[type="content"] {
+    display: flex;
+    justify-content: flex-end;
+    width: calc(40% - 100px);
+    overflow: hidden;
+}
+
+.containerProfiles {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 15px;
+}
+
+.containerProfiles div {
+    width: 3em;
+    height: 3em;
+    border-radius: 100%;
+    overflow-x: visible;
+    overflow-y: hidden;
+    cursor: pointer;
+}
+
+.containerProfiles div figure {
+    width: 100%;
+    height: 100%;
+    border-radius: 100%;
 }

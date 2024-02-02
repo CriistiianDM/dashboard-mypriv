@@ -1,0 +1,40 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mypriv2024
+  labels:
+    app: mypriv
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: mypriv
+  template:
+    metadata:
+      labels:
+        app: mypriv
+    spec:
+      containers:
+      - name: mypriv-frontend
+        image: cristiank/mypriv_frontend:latest
+        ports:
+        - containerPort: 3000
+      - name: mypriv-db
+        image: cristiank/mypriv_db:latest
+        ports:
+        - containerPort: 5432
+      - name: mypriv-backend
+        image: cristiank/mypriv_backend:latest
+        ports:
+        - containerPort: 4700
+        env:
+        - name: DB_HOST
+          value: ""
+        - name: DB_PORT
+          value: ""
+        - name: DB_NAME
+          value: ""
+        - name: DB_USER
+          value: ""
+        - name: DB_PASSWORD
+          value: ""

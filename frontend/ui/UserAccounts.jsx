@@ -5,6 +5,8 @@
 
 import { getAllDataUser } from "../api/data";
 import { useEffect , useState } from 'react';
+import RenderImg from "../shared/utils/RenderImg";
+import styles from '../css/header.module.css'
 
 // User Accounts 
 export default () => {
@@ -13,7 +15,6 @@ export default () => {
    const getData = async () => {
         const response = await getAllDataUser();
         setAllData(response?.data)
-        console.log(response)
    }
 
    useEffect(() => {
@@ -23,7 +24,15 @@ export default () => {
    }, []);
 
    return (
-        <aside>
+        <aside className={styles.containerProfiles}>
+            {
+             allData.length > 0 && 
+             allData.map((e,index) => (                    
+                <div key={index}>
+                    <RenderImg url={e.profile_picture} alt={index} />
+                </div>
+             ))
+            }
         </aside>
    );
 }
